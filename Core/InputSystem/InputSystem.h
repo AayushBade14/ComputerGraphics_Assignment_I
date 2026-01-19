@@ -11,6 +11,10 @@
 
 #pragma once
 
+#include "../Backend/KeyCode.h"
+#include "../Backend/MouseButton.h"
+#include <pair>
+
 class InputSystem
 {
 
