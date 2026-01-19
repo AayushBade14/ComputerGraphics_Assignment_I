@@ -10,6 +10,7 @@
 //-----------------------------------------------------------------------------
 
 #include "../../Platform/GLFW/GLFWWindow.h"
+#include <cstdlib>
 
 std::unique_ptr<Window> WindowFactory::Create(Backend backend, const WindowProp& prop)
 {
@@ -20,14 +21,14 @@ std::unique_ptr<Window> WindowFactory::Create(Backend backend, const WindowProp&
 
     case Backend::SDL:
       std::cerr << "SDL Backend not implemented yet! Retry with GLFW" << std::endl;
-      return nullptr;
+      exit(1);
 
     case Backend::UNKNOWN:
       std::cerr << "Unknown Backend! Retry with GLFW" << std::endl;
-      return nullptr;
+      exit(1);
 
     default:
       std::cerr << "Unknown Backend! Retry with GLFW" << std::endl;
-      return nullptr;
+      exit(1);
   }
 }
