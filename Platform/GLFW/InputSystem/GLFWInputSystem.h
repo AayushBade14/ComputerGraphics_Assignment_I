@@ -11,6 +11,7 @@
 #pragma once
 
 #include "../../../Core/InputSystem/InputSystem.h"
+#include "../../../Core/EventBus/EventBus.h"
 #include <unordered_map>
 
 class GLFWInputSystem : public InputSystem
@@ -30,6 +31,10 @@ class GLFWInputSystem : public InputSystem
     EventBus& r_EventBus;
 
   public:
+    
+    GLFWInputSystem(EventBus& bus);
+
+    ~GLFWInputSystem();
 
     void BeginFrame() override;
     void PollEvents() override;
