@@ -80,6 +80,7 @@ inline KeyCode GLFWKeyToKeyCode(int glfwKey)
     case GLFW_KEY_F10: return KeyCode::F10;
     case GLFW_KEY_F11: return KeyCode::F11;
     case GLFW_KEY_F12: return KeyCode::F12;
-
+    
+    default: return KeyCode::NONE;
   }
 }
