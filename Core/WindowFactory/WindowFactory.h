@@ -12,10 +12,9 @@
 #pragma once
 
 #include <memory>
+#include "../Window/Window.h"
 #include "../Backend/Backend.h"
 #include "../Window/WindowProp.h"
-
-class Window; //forward declaration of the window class
 
 class WindowFactory
 {

@@ -18,7 +18,7 @@ void Problem1::Run()
   WindowProp prop;
   prop.Width = 1280;
   prop.Height = 720;
-  prop.Title = "Problem1 - B23CS1084"
+  prop.Title = "Problem1 - B23CS1084";
 
   std::unique_ptr<Window> window = WindowFactory::Create(Backend::GLFW, prop);
 

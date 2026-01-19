@@ -10,7 +10,9 @@
 //-----------------------------------------------------------------------------
 
 #include "../../Platform/GLFW/GLFWWindow.h"
+#include "./WindowFactory.h"
 #include <cstdlib>
+#include <iostream>
 
 std::unique_ptr<Window> WindowFactory::Create(Backend backend, const WindowProp& prop)
 {
