@@ -14,7 +14,7 @@
 
 struct WindowProp
 {
-  int Width;
-  int Height;
-  std::string Title;
+  int Width = 1280;
+  int Height = 720;
+  std::string Title = "[Assignment-I]: B23CS1084 - Aayush Bade";
 };
