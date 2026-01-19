@@ -61,11 +61,13 @@ struct MouseMovedEvent : Event
 struct MouseButtonPressedEvent : Event
 {
   MouseButton button;
+  bool isHeld;
 
-  MouseButtonPressedEvent(MouseButton btn)
+  MouseButtonPressedEvent(MouseButton btn, bool r)
   {
     type = EventType::MouseButtonPressed;
     button = btn;
+    isHeld = r;
   }
 };
 
