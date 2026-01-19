@@ -10,7 +10,12 @@
 
 #include "./Application.h"
 
+#include "../AssignmentProblems/Problem1/Problem1.h"
+
 void Application::Run()
 {
+  Problem1 problem;
+
+  problem.Run();
 
 }
