@@ -37,6 +37,7 @@ Application::Application(Backend backend, const WindowProp& prop)
 
 void Application::PushAssignmentProblem(std::unique_ptr<AssignmentProblems> problem)
 {
+  p_CurrentProblem = problem.get();
   m_AssignmentProblems.push_back(std::move(problem));
 }
 
