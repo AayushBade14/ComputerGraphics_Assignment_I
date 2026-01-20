@@ -14,12 +14,16 @@
 
 class OpenGLVertexBuffer : public VertexBuffer
 {
+  
+  private:
+
+    unsigned int m_Id;
 
   public:
 
-    OpenGLVertexBuffer() = default;
+    OpenGLVertexBuffer();
     
-    ~OpenGLVertexBuffer() = default;
+    ~OpenGLVertexBuffer();
 
     void Bind() override;
 
