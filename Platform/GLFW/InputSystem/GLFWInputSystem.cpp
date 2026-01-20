@@ -10,7 +10,7 @@
 
 #include "./GLFWInputSystem.h"
 
-GLFWInputSystem::GLFWInputSystem(EventBus& bus) r_EventBus(bus)
+GLFWInputSystem::GLFWInputSystem(EventBus& bus) : r_EventBus(bus)
 {}
 
 GLFWInputSystem::~GLFWInputSystem() {}
@@ -25,12 +25,14 @@ void GLFWInputSystem::BeginFrame()
 
 bool GLFWInputSystem::IsKeyDown(KeyCode key) const
 {
-  return m_KeyStates[key];
+  auto it = m_KeyStates.find(key);
+  return (it != m_KeyStates.end()) ? it->second : false;
 }
 
 bool GLFWInputSystem::IsMouseButtonDown(MouseButton btn) const
 {
-  return m_MouseButtonStates[btn];
+  auto it = m_MouseButtonStates.find(btn);
+  return (it != m_MouseButtonStates.end()) ? it->second : false;
 }
 
 void GLFWInputSystem::OnKeyPressed(KeyCode key, bool repeat)

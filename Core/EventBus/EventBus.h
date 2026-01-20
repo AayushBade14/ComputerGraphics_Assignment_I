@@ -16,6 +16,8 @@
 #include "../Event/EventType.h"
 #include "../Event/Event.h"
 
+using Callback = std::function<void(const Event&)>;
+
 class EventBus
 {
 
@@ -24,8 +26,6 @@ class EventBus
     std::unordered_map<EventType, std::vector<Callback>> m_Subscribers;
 
   public:
-
-    using Callback = std::function<void(const Event&)>;
 
     void Subscribe(EventType type, Callback cb);
 

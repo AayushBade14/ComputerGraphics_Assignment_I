@@ -147,7 +147,7 @@ void GLFWWindow::RegisterCallbacks()
     }
   );
 
-  glfwSetMouseButtonCallback(h_WindowHandle
+  glfwSetMouseButtonCallback(h_WindowHandle,
     [](GLFWwindow* window, int btn, int action, int mods)
     {
       GLFWWindow* self = static_cast<GLFWWindow*>(glfwGetWindowUserPointer(window));
@@ -162,7 +162,7 @@ void GLFWWindow::RegisterCallbacks()
       }
       else if(action == GLFW_RELEASE)
       {
-        self->r_InputSystem.OnMouseButtonReleased(btn);
+        self->r_InputSystem.OnMouseButtonReleased(translated);
       }
     }
   );

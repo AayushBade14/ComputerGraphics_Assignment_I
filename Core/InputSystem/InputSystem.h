@@ -23,12 +23,11 @@ class InputSystem
     virtual ~InputSystem() = default;
 
     virtual void BeginFrame() = 0;
-    virtual void PollEvents() = 0;
     
     // query state
     virtual bool IsKeyDown(KeyCode key) const = 0;
     virtual bool IsMouseButtonDown(MouseButton btn) const = 0;
-    virtual std::pair<float, float> GetMousePosition() const = 0;
+    //virtual std::pair<float, float> GetMousePosition() const = 0;
 
     virtual void OnKeyPressed(KeyCode key, bool repeat) = 0;
     virtual void OnKeyReleased(KeyCode key) = 0;

@@ -11,6 +11,8 @@
 #pragma once
 
 #include "./EventType.h"
+#include "../Backend/KeyCode.h"
+#include "../Backend/MouseButton.h"
 
 struct Event
 {
@@ -48,7 +50,7 @@ struct MouseMovedEvent : Event
   float dx;
   float dy;
 
-  MouseMoved(float x, float y, float dx, float dy)
+  MouseMovedEvent(float x, float y, float dx, float dy)
   {
     type = EventType::MouseMoved;
     this->x = x;

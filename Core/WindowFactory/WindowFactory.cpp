@@ -9,7 +9,7 @@
 //
 //-----------------------------------------------------------------------------
 
-#include "../../Platform/GLFW/GLFWWindow.h"
+#include "../../Platform/GLFW/Window/GLFWWindow.h"
 #include "./WindowFactory.h"
 #include <cstdlib>
 #include <iostream>

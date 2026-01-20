@@ -15,5 +15,8 @@
 
 class EventBusFactory
 {
-  static std::unique_ptr<EventBus> Create();
+  
+  public:
+    static std::unique_ptr<EventBus> Create();
+
 };

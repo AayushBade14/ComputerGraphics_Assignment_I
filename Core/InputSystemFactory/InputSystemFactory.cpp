@@ -18,7 +18,7 @@ std::unique_ptr<InputSystem> InputSystemFactory::Create(Backend backend, EventBu
   switch(backend)
   {
     case Backend::GLFW:
-      return std::make_unique(GLFWInputSystem(eventBus));
+      return std::make_unique<GLFWInputSystem>(eventBus);
 
     case Backend::SDL:
       std::cerr << "SDL Backend not implemented yet! Retry with GLFW" << std::endl;
