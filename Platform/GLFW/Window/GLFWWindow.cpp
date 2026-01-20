@@ -88,3 +88,8 @@ void GLFWWindow::SwapBuffers()
 {
   glfwSwapBuffers(h_WindowHandle);
 }
+
+void GLFWWindow::PollEvents()
+{
+  glfwPollEvents();
+}

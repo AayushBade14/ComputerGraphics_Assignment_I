@@ -37,7 +37,6 @@ class GLFWInputSystem : public InputSystem
     ~GLFWInputSystem();
 
     void BeginFrame() override;
-    void PollEvents() override;
 
     bool IsKeyDown(KeyCode key) const override;
     bool IsMouseButtonDown(MouseButton btn) const override;

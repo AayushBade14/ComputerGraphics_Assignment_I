@@ -27,7 +27,8 @@ class Window
     
     // swaps the back and the front buffers
     virtual void SwapBuffers() = 0;
-
+    //polls the window events which will be sent to the input system
+    virtual void PollEvents() = 0;
 };
 
 

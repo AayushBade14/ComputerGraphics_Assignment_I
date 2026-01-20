@@ -39,5 +39,5 @@ class GLFWWindow : public Window
     bool ShouldClose() const override;
 
     void SwapBuffers() override;
-
+    void PollEvents() override;
 };

@@ -24,6 +24,7 @@ void Problem1::Run()
 
   while(!window->ShouldClose())
   {
+    window->PollEvents();
     window->SwapBuffers();
   }
 
