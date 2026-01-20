@@ -10,8 +10,11 @@
 
 #include "./OpenGLRenderer.h"
 #include <glad/glad.h>
+#include <GLFW/glfw3.h>
 #include <iostream>
 #include <cstdlib>
+
+//TO-DO: Remove the GLFW coupling here
 
 void OpenGLRenderer::Init()
 {
@@ -22,6 +25,8 @@ void OpenGLRenderer::Init()
   }
 
   std::cout << "OpenGL initialized!" << std::endl;
+
+  glEnable(GL_DEPTH_TEST);
 }
 
 void OpenGLRenderer::Shutdown()
