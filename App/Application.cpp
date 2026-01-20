@@ -54,11 +54,13 @@ void Application::OnKeyPress(const KeyPressedEvent& e)
     case KeyCode::F1:
       if(!m_AssignmentProblems.empty())
         p_CurrentProblem = m_AssignmentProblems[0].get();
+      std::cout << "Switching to problem-1" << std::endl;
       break;
 
     case KeyCode::F2:
       if(m_AssignmentProblems.size() == 2)
         p_CurrentProblem = m_AssignmentProblems[1].get();
+      std::cout << "Switching to problem-2" << std::endl;
       break;
   }
 }
