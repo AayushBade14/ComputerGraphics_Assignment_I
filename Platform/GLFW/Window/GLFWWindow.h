@@ -32,6 +32,8 @@ class GLFWWindow : public Window
     inline static int m_WindowInstanceCount = 0;
     
     void RegisterCallbacks();
+    
+    void OnWindowClose();
 
   public:
     

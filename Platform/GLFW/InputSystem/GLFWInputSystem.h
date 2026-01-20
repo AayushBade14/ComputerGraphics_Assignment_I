@@ -29,7 +29,7 @@ class GLFWInputSystem : public InputSystem
     float m_ScrollY;
 
     EventBus& r_EventBus;
-
+    
   public:
     
     GLFWInputSystem(EventBus& bus);

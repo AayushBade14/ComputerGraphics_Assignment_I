@@ -54,7 +54,17 @@ r_InputSystem(inpytSystem)
   glfwSetWindowUserPointer(h_WindowHandle, this);
 
   RegisterCallbacks();
-
+  
+  r_EventBus.Subscribe( EventType::WindowClose
+    [this](const Event& e)
+    {
+      if(e.type == EventType::WindowClose)
+      {
+        OnWindowClose();
+      }
+    } 
+  );
+  
   std::cout << "Successfully created a GLFW_WINDOW instance | Total Window instances: " 
   << m_WindowInstanceCount << std::endl;
 
@@ -166,4 +176,10 @@ void GLFWWindow::RegisterCallbacks()
       }
     }
   );
+}
+
+void GLFWWindow::OnWindowClose()
+{
+  std::cout << "Closing window!" << std::endl;
+  glfwSetWindowShouldClose(h_WindowHandle, true);
 }
