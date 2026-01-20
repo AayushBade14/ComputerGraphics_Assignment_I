@@ -11,8 +11,10 @@
 
 #pragma once
 
-#include "../../Core/Window/Window.h"
-#include "../../Core/Window/WindowProp.h"
+#include "../../../Core/Window/Window.h"
+#include "../../../Core/Window/WindowProp.h"
+#include "../../../Core/InputSystem/InputSystem.h"
+#include "../../../Core/EventBus/EventBus.h"
 
 struct GLFWwindow; // forward declaring the GLFWwindow struct
 
@@ -22,12 +24,18 @@ class GLFWWindow : public Window
 
     GLFWwindow* h_WindowHandle = nullptr;
     WindowProp m_WindowProp;
+    
+    EventBus& r_EventBus;
+    InputSystem& r_InputSystem;
+
     inline static bool m_IsGLFWInit = false;
     inline static int m_WindowInstanceCount = 0;
+    
+    void RegisterCallbacks();
 
   public:
     
-    GLFWWindow(const WindowProp& prop);
+    GLFWWindow(const WindowProp& prop, EventBus& eventBus, InputSystem& inputSystem);
 
     ~GLFWWindow();
 

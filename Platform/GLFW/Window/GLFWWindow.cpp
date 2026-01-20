@@ -11,10 +11,15 @@
 
 #include <GLFW/glfw3.h>
 #include "./GLFWWindow.h"
+#include "../Mappings/GLFWKeyMappings.h"
+#include "../Mappings/GLFWMouseMappings.h"
 #include <iostream>
 #include <cstdlib>
 
-GLFWWindow::GLFWWindow(const WindowProp& prop) : m_WindowProp(prop)
+GLFWWindow::GLFWWindow(const WindowProp& prop, EventBus& eventBus, InputSystem& inpytSystem) : 
+m_WindowProp(prop),
+r_EventBus(eventBus),
+r_InputSystem(inpytSystem)
 {
   if(!m_IsGLFWInit)
   {
@@ -45,6 +50,10 @@ GLFWWindow::GLFWWindow(const WindowProp& prop) : m_WindowProp(prop)
     std::cerr << "ERROR: GLFW_WINDOW::Create()" << std::endl;
     exit(1);
   }
+  
+  glfwSetWindowUserPointer(h_WindowHandle, this);
+
+  RegisterCallbacks();
 
   std::cout << "Successfully created a GLFW_WINDOW instance | Total Window instances: " 
   << m_WindowInstanceCount << std::endl;
@@ -92,4 +101,69 @@ void GLFWWindow::SwapBuffers()
 void GLFWWindow::PollEvents()
 {
   glfwPollEvents();
+}
+
+void GLFWWindow::RegisterCallbacks()
+{
+  glfwSetKeyCallback(h_WindowHandle,
+    [](GLFWwindow* window, int key, int scancode, int action, int mods)
+    {
+      GLFWWindow* self = static_cast<GLFWWindow*>(glfwGetWindowUserPointer(window));
+      
+      if(!self) return;
+      
+      KeyCode translated = GLFWKeyToKeyCode(key);
+      
+      if(action == GLFW_PRESS || action == GLFW_REPEAT)
+      {
+        self->r_InputSystem.OnKeyPressed(translated, action == GLFW_REPEAT);
+      }
+      else if(action == GLFW_RELEASE)
+      {
+        self->r_InputSystem.OnKeyReleased(translated);
+      }
+    }
+  );
+
+  glfwSetFramebufferSizeCallback(h_WindowHandle,
+    [](GLFWwindow* window, int width, int height)
+    {
+      GLFWWindow* self = static_cast<GLFWWindow*>(glfwGetWindowUserPointer(window));
+
+      if(!self) return;
+
+      self->r_EventBus.Publish(WindowResizeEvent(width, height));
+    }
+  );
+
+  glfwSetWindowCloseCallback(h_WindowHandle,
+    [](GLFWwindow* window)
+    {
+      GLFWWindow* self = static_cast<GLFWWindow*>(glfwGetWindowUserPointer(window));
+
+      if(!self) return;
+
+      self->r_EventBus.Publish(WindowCloseEvent());
+    }
+  );
+
+  glfwSetMouseButtonCallback(h_WindowHandle
+    [](GLFWwindow* window, int btn, int action, int mods)
+    {
+      GLFWWindow* self = static_cast<GLFWWindow*>(glfwGetWindowUserPointer(window));
+
+      if(!self) return;
+      
+      MouseButton translated = GLFWMouseToMouseButton(btn);
+
+      if(action == GLFW_PRESS || GLFW_REPEAT)
+      {
+        self->r_InputSystem.OnMouseButtonPressed(translated, action == GLFW_REPEAT);
+      }
+      else if(action == GLFW_RELEASE)
+      {
+        self->r_InputSystem.OnMouseButtonReleased(btn);
+      }
+    }
+  );
 }

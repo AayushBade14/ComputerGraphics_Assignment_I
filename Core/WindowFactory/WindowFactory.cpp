@@ -14,12 +14,12 @@
 #include <cstdlib>
 #include <iostream>
 
-std::unique_ptr<Window> WindowFactory::Create(Backend backend, const WindowProp& prop)
+std::unique_ptr<Window> WindowFactory::Create(Backend backend, const WindowProp& prop, EventBus& eventBus, InputSystem& inputSystem)
 {
   switch(backend)
   {
     case Backend::GLFW:
-      return std::make_unique<GLFWWindow>(prop);
+      return std::make_unique<GLFWWindow>(prop, eventBus, inputSystem);
 
     case Backend::SDL:
       std::cerr << "SDL Backend not implemented yet! Retry with GLFW" << std::endl;

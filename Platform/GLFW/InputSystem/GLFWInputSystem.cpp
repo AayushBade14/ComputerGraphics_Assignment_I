@@ -9,7 +9,6 @@
 //-----------------------------------------------------------------------------
 
 #include "./GLFWInputSystem.h"
-#include "../Window/GLFWWindow.h"
 
 GLFWInputSystem::GLFWInputSystem(EventBus& bus) r_EventBus(bus)
 {}

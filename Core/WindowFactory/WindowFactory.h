@@ -15,11 +15,13 @@
 #include "../Window/Window.h"
 #include "../Backend/Backend.h"
 #include "../Window/WindowProp.h"
+#include "../EventBus/EventBus.h"
+#include "../InputSystem/InputSystem.h"
 
 class WindowFactory
 {
 
   public:
 
-    static std::unique_ptr<Window> Create(Backend backend, const WindowProp& prop);
+    static std::unique_ptr<Window> Create(Backend backend, const WindowProp& prop, EventBus& eventBus, InputSystem& inputSystem);
 };

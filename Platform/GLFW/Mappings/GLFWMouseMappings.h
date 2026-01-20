@@ -10,7 +10,8 @@
 
 #pragma once
 
-#include "../../Core/Backend/MouseButton.h"
+#include "../../../Core/Backend/MouseButton.h"
+#include <GLFW/glfw3.h>
 
 inline MouseButton GLFWMouseToMouseButton(int btn)
 {
