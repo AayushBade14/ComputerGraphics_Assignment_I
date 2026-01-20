@@ -8,6 +8,7 @@
 
 #include "./App/Application.h"
 #include "./AssignmentProblems/Problem1/Problem1.h"
+#include "./AssignmentProblems/Problem2/Problem2.h"
 
 int main(void)
 {
@@ -18,6 +19,7 @@ int main(void)
   
   Application app(Backend::GLFW, prop);
   app.PushAssignmentProblem(std::make_unique<Problem1>());
+  app.PushAssignmentProblem(std::make_unique<Problem2>());
   app.Run();
 
   return 0;

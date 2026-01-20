@@ -11,8 +11,8 @@
 #pragma once
 
 #include "../Core/WindowFactory/WindowFactory.h"
-#include "../Core/EventBus/EventBus.h"
-#include "../Core/InputSystem/InputSystem.h"
+#include "../Core/EventBusFactory/EventBusFactory.h"
+#include "../Core/InputSystemFactory/InputSystemFactory.h"
 #include "../AssignmentProblems/AssignmentProblems.h"
 #include <memory>
 
@@ -28,10 +28,8 @@ class Application
     std::vector<std::unique_ptr<AssignmentProblems>> m_AssignmentProblems;
     AssignmentProblems* p_CurrentProblem = nullptr;
     
-    void OnKeyPress();
+    void OnKeyPress(const KeyPressedEvent& e);
     
-    void OnWindowClose();
-
   public:
     
     Application(Backend backend, const WindowProp& prop);

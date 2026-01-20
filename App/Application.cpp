@@ -18,7 +18,7 @@ Application::Application(Backend backend, const WindowProp& prop)
 
   p_InputSystem = InputSystemFactory::Create(backend, *p_EventBus);
 
-  p_Window = WindowFactory::Create(backend, *p_EventBus, *p_InputSystem);
+  p_Window = WindowFactory::Create(backend, prop, *p_EventBus, *p_InputSystem);
 
   if(!p_EventBus || !p_InputSystem || !p_Window)
   {
@@ -27,10 +27,11 @@ Application::Application(Backend backend, const WindowProp& prop)
   }
 
   //subscribe to the keypressed events
-  p_EventBus->Subscribe(EventType::KeyPressed
-    [this](const KeyPressedEvent& e)
+  p_EventBus->Subscribe(EventType::KeyPressed,
+    [this](const Event& e)
     {
-      OnKeyPress();
+      const auto& keyEvent = static_cast<const KeyPressedEvent&>(e);
+      OnKeyPress(keyEvent);
     }
   );
 }
@@ -46,7 +47,7 @@ void Application::OnKeyPress(const KeyPressedEvent& e)
   if(e.isHeld) return;
 
   switch (e.key) {
-    case KeyCode::Escape:
+    case KeyCode::ESCAPE:
       p_EventBus->Publish(WindowCloseEvent());
       break;
 
