@@ -40,8 +40,10 @@ class GLFWInputSystem : public InputSystem
 
     bool IsKeyDown(KeyCode key) const override;
     bool IsMouseButtonDown(MouseButton btn) const override;
-    std::pair<float, float> GetMousePosition() const override;
-
+    // TO-DO: Add this method inside the window interface as it's not specific to the input
+    // rather it is a window specific thing 
+    //std::pair<float, float> GetMousePosition() const override;
+    
     void OnKeyPressed(KeyCode key, bool repeat) override;
     void OnKeyReleased(KeyCode key) override;
 

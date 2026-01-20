@@ -11,7 +11,7 @@
 #pragma once
 
 #include <vector>
-#include <function>
+#include <functional>
 #include <unordered_map>
 #include "../Event/EventType.h"
 #include "../Event/Event.h"

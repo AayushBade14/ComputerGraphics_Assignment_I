@@ -26,5 +26,38 @@ void GLFWInputSystem::BeginFrame()
 
 bool GLFWInputSystem::IsKeyDown(KeyCode key) const
 {
+  return m_KeyStates[key];
+}
 
+bool GLFWInputSystem::IsMouseButtonDown(MouseButton btn) const
+{
+  return m_MouseButtonStates[btn];
+}
+
+void GLFWInputSystem::OnKeyPressed(KeyCode key, bool repeat)
+{
+  m_KeyStates[key] = true;
+
+  r_EventBus.Publish(KeyPressedEvent{key, repeat});
+}
+
+void GLFWInputSystem::OnKeyReleased(KeyCode key)
+{
+  m_KeyStates[key] = false;
+
+  r_EventBus.Publish(KeyReleasedEvent{key});
+}
+
+void GLFWInputSystem::OnMouseButtonPressed(MouseButton btn, bool repeat)
+{
+  m_MouseButtonStates[btn] = true;
+
+  r_EventBus.Publish(MouseButtonPressedEvent{btn, repeat});
+} 
+
+void GLFWInputSystem::OnMouseButtonReleased(MouseButton btn)
+{
+  m_MouseButtonStates[btn] = false;
+
+  r_EventBus.Publish(MouseButtonReleasedEvent{btn});
 }

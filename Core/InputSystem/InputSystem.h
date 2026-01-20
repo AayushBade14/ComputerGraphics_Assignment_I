@@ -13,7 +13,7 @@
 
 #include "../Backend/KeyCode.h"
 #include "../Backend/MouseButton.h"
-#include <pair>
+#include <utility>
 
 class InputSystem
 {
